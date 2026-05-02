@@ -133,11 +133,82 @@ nav {
 
 /* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 768px) {
-    nav { flex-direction: column; gap: 15px; }
-    .hero { text-align: center; justify-content: center; padding: 0 5%; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .hero-btns { flex-direction: column; width: 100%; }
-    .btn-secondary { margin-top: 10px; }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 5%;
+        text-align: center;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .menu a {
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 80px 5% 50px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        max-width: 100%;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .hoteis,
+    .experiencias {
+        padding: 60px 5%;
+    }
+
+    .hoteis h2,
+    .experiencias h2 {
+        font-size: 2rem;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 340px;
+    }
 }
 .footer {
     background: #111;

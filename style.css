@@ -39,7 +39,7 @@ nav {
 
 /* --- HERO SECTION --- */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('opa.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("tabatinga.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -215,4 +215,8 @@ nav {
     color: white;
     text-align: center;
     padding: 30px;
+}
+.hotel-list {
+  display: flex;
+  gap: 20px;
 }

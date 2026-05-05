@@ -9,12 +9,12 @@
 </head>
 <body>
     
-<nav>
+<nav id="navbar">
     <h1>IARAS</h1>
     <div class="menu">
-        <a href="#hoteis">Hoteis</a>
-        <a href="#experiencias">Experiencias</a>
-        <a href="#">Contato</a>
+        <a href="#home">Início</a>
+        <a href="#experiencias">Experiências</a>
+        <a href="#contato">Contato</a>
     </div>
     <button class="btn">Reservar</button>
 </nav>
@@ -67,23 +67,72 @@
     </div>
 </section>
 
-<section class="experiencias" id="experiencias">
-    <h2>Experiências Únicas</h2>
-    <div class="cards-container">
-        <div class="card">
-            <div class="card-image" style="background-image: url('foto-barco.jpg'); background-color: #2c3e50;"></div>
-            <h3>Passeios de Barco</h3>
-            <p>Explore o encontro das águas e a vida selvagem no Rio Amazonas.</p>
-        </div>
-        <div class="card">
-            <div class="card-image" style="background-image: url('foto-comida.jpg'); background-color: #e67e22;"></div>
-            <h3>Culinária Local</h3>
-            <p>O melhor do peixe fresco e frutos típicos da região amazônica.</p>
-        </div>
+<section id="experiencias">
+  <h2>Experiências</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://source.unsplash.com/400x250/?hotel" alt="Hotel">
+      <h3>Hospedagem Premium</h3>
+      <p>Conforto e luxo para sua estadia.</p>
+      <button>Ver mais</button>
     </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/400x250/?resort" alt="Resort">
+      <h3>Resort Completo</h3>
+      <p>Relaxamento com tudo incluso.</p>
+      <button>Ver mais</button>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/400x250/?travel" alt="Viagem">
+      <h3>Pacotes de Viagem</h3>
+      <p>Explore destinos incríveis.</p>
+      <button>Ver mais</button>
+    </div>
+
+  </div>
 </section>
+<script>
+  window.addEventListener("scroll", function() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+  });
+</script>
 <footer class="footer">
     <p>© 2026 Rota do Norte - Tabatinga, Amazonas</p>
 </footer>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Fazer Reserva</h2>
+
+    <input type="text" placeholder="Seu nome">
+    <input type="date">
+    
+    <select>
+      <option>Escolha um hotel</option>
+      <option>Seven Hotel</option>
+      <option>TAKANA</option>
+      <option>Hotel Maylu</option>
+    </select>
+
+    <button class="btn">Confirmar Reserva</button>
+  </div>
+</div>
+<script>
+  const modal = document.getElementById("modal");
+  const btn = document.querySelector(".btn");
+  const close = document.querySelector(".close");
+
+  btn.onclick = () => modal.style.display = "flex";
+  close.onclick = () => modal.style.display = "none";
+
+  window.onclick = (e) => {
+    if (e.target == modal) modal.style.display = "none";
+  };
+</script>
 </body>
 </html>

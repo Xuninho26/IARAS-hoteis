@@ -4,20 +4,40 @@
     src: url('./Candreva.ttf') format('truetype');
 }
 body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth; /* Deixa a rolagem suave ao clicar no menu */
+  padding-top: 80px;
 }
 
 /* --- NAVBAR --- */
-nav {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    padding: 18px 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 100vw;
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+#navbar.scrolled {
+  padding: 10px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#navbar a:hover {
+  color: #0077ff;
 }
 nav h1 {
     font-family: 'Candreva' !important;
@@ -298,3 +318,108 @@ nav h1 {
 
 .prev { left: -15px; }
 .next { right: -15px; }
+#experiencias {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+#experiencias h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  width: 300px;
+  padding: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+}
+
+.card p {
+  color: #555;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: #005ecc;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.close {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

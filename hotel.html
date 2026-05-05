@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Seven Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <h1>IARAS</h1>
+    <a href="index.html">Voltar</a>
+</nav>
+
+<section class="hotel-page">
+
+    <div class="hotel-container">
+
+    <!-- SLIDER -->
+    <div class="slider">
+        <button class="prev">&#10094;</button>
+
+        <img id="slider-img" src="seven.jpg">
+
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- INFO -->
+    <div class="hotel-info">
+        <h1>Seven Hotel</h1>
+        <p class="local">📍 Tabatinga - Amazonas</p>
+
+        <p>
+            Desfrute de conforto moderno com localização privilegiada no centro da cidade.
+        </p>
+
+        <p class="rating">⭐ Novo</p>
+        <p class="price">A partir de R$ 250</p>
+
+        <a href="#" class="btn-whatsapp">
+            Reservar via WhatsApp
+        </a>
+    </div>
+
+</div>
+</section>
+<script>
+let imagens = [
+    "seven.jpg",
+    "seven2.jpg",
+    "seven3.jpg"
+];
+
+let index = 0;
+let img = document.getElementById("slider-img");
+
+document.querySelector(".next").onclick = () => {
+    index = (index + 1) % imagens.length;
+    img.src = imagens[index];
+};
+
+document.querySelector(".prev").onclick = () => {
+    index = (index - 1 + imagens.length) % imagens.length;
+    img.src = imagens[index];
+};
+</script>
+</body>
+</html>

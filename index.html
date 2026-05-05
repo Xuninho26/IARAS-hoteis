@@ -15,6 +15,7 @@
         <a href="#home">Início</a>
         <a href="#experiencias">Experiências</a>
         <a href="#contato">Contato</a>
+        <a href="reservas.html">Reservas</a>
     </div>
     <button class="btn">Reservar</button>
 </nav>
@@ -119,19 +120,48 @@
       <option>Hotel Maylu</option>
     </select>
 
-    <button class="btn">Confirmar Reserva</button>
+    <button class="btn" id="confirmar">Confirmar Reserva</button>
   </div>
 </div>
 <script>
   const modal = document.getElementById("modal");
   const btn = document.querySelector(".btn");
   const close = document.querySelector(".close");
+  const confirmar = document.getElementById("confirmar");
 
   btn.onclick = () => modal.style.display = "flex";
   close.onclick = () => modal.style.display = "none";
 
   window.onclick = (e) => {
     if (e.target == modal) modal.style.display = "none";
+  };
+
+  confirmar.onclick = () => {
+    const nome = document.querySelector("#modal input[type='text']").value;
+    const data = document.querySelector("#modal input[type='date']").value;
+    const hotel = document.querySelector("#modal select").value;
+
+    if (!nome || !data || hotel === "Escolha um hotel") {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    const reserva = { nome, data, hotel };
+
+    // pega reservas existentes
+    const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+    reservas.push(reserva);
+
+    // salva novamente
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+
+    alert("Reserva salva com sucesso! ✅");
+
+    document.querySelectorAll("#modal input").forEach(input => input.value = "");
+    document.querySelector("#modal select").selectedIndex = 0;
+
+    modal.style.display = "none";
   };
 </script>
 </body>

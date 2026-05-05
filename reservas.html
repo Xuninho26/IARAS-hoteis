@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Reservas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 style="text-align:center; margin-top: 40px;">Reservas</h1>
+
+<div id="lista-reservas" style="padding: 40px;"></div>
+
+<script>
+  const container = document.getElementById("lista-reservas");
+
+  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  if (reservas.length === 0) {
+    container.innerHTML = "<p>Nenhuma reserva ainda.</p>";
+  } else {
+    reservas.forEach((r, index) => {
+      const div = document.createElement("div");
+      div.style.background = "#fff";
+      div.style.padding = "20px";
+      div.style.marginBottom = "10px";
+      div.style.borderRadius = "10px";
+
+      div.innerHTML = `
+        <strong>Nome:</strong> ${r.nome} <br>
+        <strong>Hotel:</strong> ${r.hotel} <br>
+        <strong>Data:</strong> ${r.data}
+      `;
+
+      container.appendChild(div);
+    });
+  }
+</script>
+
+</body>
+</html>

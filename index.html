@@ -1,118 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IARAS</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IARAS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    
+
 <nav id="navbar">
-    <h1>IARAS</h1>
-    <div class="menu">
-        <a href="#home">Início</a>
-        <a href="#experiencias">Experiências</a>
-        <a href="#contato">Contato</a>
-        <a href="reservas.html">Reservas</a>
-    </div>
-    <button class="btn">Reservar</button>
+  <h1>IARAS</h1>
+  <div class="menu">
+    <a href="#home">Início</a>
+    <a href="#experiencias">Experiências</a>
+    <a href="reservas.html">Reservas</a>
+  </div>
+  <button class="btn">Reservar</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-content">
-        <h1>Descubra a Amazônia em Luxo Sustentável</h1>
-        <p>Experiências autênticas na maior floresta tropical do mundo, onde conforto encontra conservação.</p>
-        <div class="hero-btns">
-            <button class="btn-primary">Explorar Hotéis</button>
-            <button class="btn-secondary">Saiba Mais</button>
-        </div>
-    </div>
-</section>
-
-<section class="hoteis" id="hoteis">
-    <h2>Hotéis em Destaque</h2>
-
-    <div class="cards-container">
-
-        <a href="hotel.html" class="card-link">
-            <div class="card">
-                <div class="card-image" style="background-image: url('seven.jpg');">
-
-                </div>
-                <h3>Seven Hotel</h3>
-                <p>Conforto moderno no coração da cidade.</p>
-                <button class="btn-card">Ver mais</button>
-            </div>
-        </a>
-
-        <a href="hotel2.html" class="card-link">
-            <div class="card">
-                <div class="card-image hotel-1"></div>
-                <h3>TAKANA</h3>
-                <p>Experiência imersiva na floresta amazônica.</p>
-                <button class="btn-card">Ver mais</button>
-            </div>
-        </a>
-
-        <a href="hotel3.html" class="card-link">
-            <div class="card">
-                <div class="card-image hotel-2"></div>
-                <h3>Hotel Maylu</h3>
-                <p>Praticidade e conforto no centro.</p>
-                <button class="btn-card">Ver mais</button>
-            </div>
-        </a>
-
-    </div>
-</section>
-
-<section id="experiencias">
-  <h2>Experiências</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <img src="https://source.unsplash.com/400x250/?hotel" alt="Hotel">
-      <h3>Hospedagem Premium</h3>
-      <p>Conforto e luxo para sua estadia.</p>
-      <button>Ver mais</button>
-    </div>
-
-    <div class="card">
-      <img src="https://source.unsplash.com/400x250/?resort" alt="Resort">
-      <h3>Resort Completo</h3>
-      <p>Relaxamento com tudo incluso.</p>
-      <button>Ver mais</button>
-    </div>
-
-    <div class="card">
-      <img src="https://source.unsplash.com/400x250/?travel" alt="Viagem">
-      <h3>Pacotes de Viagem</h3>
-      <p>Explore destinos incríveis.</p>
-      <button>Ver mais</button>
-    </div>
-
+  <div class="hero-content">
+    <h1>Descubra a Amazônia em Luxo Sustentável</h1>
+    <p>Experiências autênticas na maior floresta tropical do mundo.</p>
   </div>
 </section>
-<script>
-  window.addEventListener("scroll", function() {
-    const navbar = document.getElementById("navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
-</script>
+
+<!-- HOTÉIS -->
+<section class="hoteis" id="hoteis">
+  <h2>Hotéis em Destaque</h2>
+
+  <div class="cards-container">
+    <a href="hotel.html" class="card-link">
+      <div class="card">
+        <div class="card-image" style="background-image:url('seven.jpg')"></div>
+        <h3>Seven Hotel</h3>
+        <p>Conforto moderno</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIAS -->
+<section id="experiencias">
+  <h2>Experiências</h2>
+</section>
+
 <footer class="footer">
-    <p>© 2026 Rota do Norte - Tabatinga, Amazonas</p>
+  <p>© 2026 IARAS</p>
 </footer>
+
+<!-- 🔥 MODAL (LOGIN + RESERVA) -->
 <div id="modal" class="modal">
-  <div class="modal-content">
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="modal-content" style="display:none;">
+    <h2>Login</h2>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="senha" type="password" placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+    <button onclick="cadastro()">Criar conta</button>
+  </div>
+
+  <!-- RESERVA -->
+  <div id="reservaBox" class="modal-content">
     <span class="close">&times;</span>
     <h2>Fazer Reserva</h2>
 
     <input type="text" placeholder="Seu nome">
     <input type="date">
-    
+
     <select>
       <option>Escolha um hotel</option>
       <option>Seven Hotel</option>
@@ -122,10 +83,15 @@
 
     <button class="btn" id="confirmar">Confirmar Reserva</button>
   </div>
+
 </div>
+
+<!-- 🔥 FIREBASE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCfCMWaSC4c1_VFvoU5WezSNjNCSpi8nf8",
@@ -137,31 +103,48 @@
   };
 
   const app = initializeApp(firebaseConfig);
+
   const db = getFirestore(app);
+  const auth = getAuth(app);
 
   window.db = db;
   window.addDoc = addDoc;
   window.collection = collection;
+
+  window.auth = auth;
+  window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+  window.signInWithEmailAndPassword = signInWithEmailAndPassword;
 </script>
 
-</script>
+<!-- ⚙️ LÓGICA DO SISTEMA -->
 <script>
-  const modal = document.getElementById("modal");
-  const btn = document.querySelector(".btn");
-  const close = document.querySelector(".close");
-  const confirmar = document.getElementById("confirmar");
+const modal = document.getElementById("modal");
+const loginBox = document.getElementById("loginBox");
+const reservaBox = document.getElementById("reservaBox");
 
-  btn.onclick = () => modal.style.display = "flex";
-  close.onclick = () => modal.style.display = "none";
+const btn = document.querySelector("nav .btn");
+const close = document.querySelector(".close");
+const confirmar = document.getElementById("confirmar");
 
-  window.onclick = (e) => {
-    if (e.target == modal) modal.style.display = "none";
-  };
+// abrir modal
+btn.onclick = () => {
+  modal.style.display = "flex";
+  reservaBox.style.display = "block";
+  loginBox.style.display = "none";
+};
 
-  confirmar.onclick = async () => {
-  const nome = document.querySelector("#modal input[type='text']").value;
-  const data = document.querySelector("#modal input[type='date']").value;
-  const hotel = document.querySelector("#modal select").value;
+// fechar modal
+close.onclick = () => modal.style.display = "none";
+
+window.onclick = (e) => {
+  if (e.target == modal) modal.style.display = "none";
+};
+
+// RESERVA
+confirmar.onclick = async () => {
+  const nome = document.querySelector("#reservaBox input[type='text']").value;
+  const data = document.querySelector("#reservaBox input[type='date']").value;
+  const hotel = document.querySelector("#reservaBox select").value;
 
   if (!nome || !data || hotel === "Escolha um hotel") {
     alert("Preencha todos os campos!");
@@ -176,14 +159,44 @@
       criadoEm: new Date()
     });
 
-    alert("Reserva salva na nuvem! ☁️🔥");
-
+    alert("Reserva salva na nuvem ☁️🔥");
     modal.style.display = "none";
+
   } catch (e) {
     alert("Erro ao salvar!");
     console.error(e);
   }
 };
+
+// LOGIN
+async function cadastro() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  try {
+    await window.createUserWithEmailAndPassword(window.auth, email, senha);
+    alert("Conta criada!");
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function login() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  try {
+    await window.signInWithEmailAndPassword(window.auth, email, senha);
+    alert("Login feito!");
+
+    loginBox.style.display = "none";
+    reservaBox.style.display = "block";
+
+  } catch (e) {
+    alert(e.message);
+  }
+}
 </script>
+
 </body>
 </html>

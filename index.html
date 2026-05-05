@@ -123,6 +123,28 @@
     <button class="btn" id="confirmar">Confirmar Reserva</button>
   </div>
 </div>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCfCMWaSC4c1_VFvoU5WezSNjNCSpi8nf8",
+    authDomain: "iaras-bcd8c.firebaseapp.com",
+    projectId: "iaras-bcd8c",
+    storageBucket: "iaras-bcd8c.firebasestorage.app",
+    messagingSenderId: "653008865243",
+    appId: "1:653008865243:web:f0814097bbf9729bb989fe"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+  window.addDoc = addDoc;
+  window.collection = collection;
+</script>
+
+</script>
 <script>
   const modal = document.getElementById("modal");
   const btn = document.querySelector(".btn");
@@ -136,33 +158,32 @@
     if (e.target == modal) modal.style.display = "none";
   };
 
-  confirmar.onclick = () => {
-    const nome = document.querySelector("#modal input[type='text']").value;
-    const data = document.querySelector("#modal input[type='date']").value;
-    const hotel = document.querySelector("#modal select").value;
+  confirmar.onclick = async () => {
+  const nome = document.querySelector("#modal input[type='text']").value;
+  const data = document.querySelector("#modal input[type='date']").value;
+  const hotel = document.querySelector("#modal select").value;
 
-    if (!nome || !data || hotel === "Escolha um hotel") {
-      alert("Preencha todos os campos!");
-      return;
-    }
+  if (!nome || !data || hotel === "Escolha um hotel") {
+    alert("Preencha todos os campos!");
+    return;
+  }
 
-    const reserva = { nome, data, hotel };
+  try {
+    await window.addDoc(window.collection(window.db, "reservas"), {
+      nome,
+      data,
+      hotel,
+      criadoEm: new Date()
+    });
 
-    // pega reservas existentes
-    const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
-
-    reservas.push(reserva);
-
-    // salva novamente
-    localStorage.setItem("reservas", JSON.stringify(reservas));
-
-    alert("Reserva salva com sucesso! ✅");
-
-    document.querySelectorAll("#modal input").forEach(input => input.value = "");
-    document.querySelector("#modal select").selectedIndex = 0;
+    alert("Reserva salva na nuvem! ☁️🔥");
 
     modal.style.display = "none";
-  };
+  } catch (e) {
+    alert("Erro ao salvar!");
+    console.error(e);
+  }
+};
 </script>
 </body>
 </html>

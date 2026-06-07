@@ -535,3 +535,41 @@ html {
   .hero { padding: 60px 6% 40px; }
   .card { width: 100%; max-width: 380px; }
 }
+
+/* --- LIGHT ANIMATIONS --- */
+/* initial state */
+[data-animate], section, .card, .hero-content, .hotel-info, .slider img {
+  opacity: 0;
+  transform: translateY(12px) scale(0.995);
+  transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+}
+
+/* in-view state */
+.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* subtle floating effect for hero image/background */
+@keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+
+.hero .hero-content { transform-origin: center; }
+.hero .hero-graphic { animation: floatY 6s ease-in-out infinite; }
+
+/* buttons micro-interaction */
+.btn { transition: transform .16s ease, box-shadow .16s ease, background .16s ease; }
+.btn:active { transform: translateY(1px) scale(.995); }
+
+/* nav links underline animation */
+#navbar .menu a { position: relative; }
+#navbar .menu a::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0; background: var(--color-primary); transition: width .28s ease; }
+#navbar .menu a:hover::after, #navbar .menu a:focus::after { width: 100%; }
+
+/* card image subtle parallax on hover */
+.card:hover .card-image { transform: scale(1.06) translateY(-4px); }
+
+/* reduce motion for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate], section, .card, .hero-content { transition: none !important; animation: none !important; }
+}

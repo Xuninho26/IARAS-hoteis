@@ -10,9 +10,10 @@
 
 <body>
 
-<nav id="navbar">
+<nav id="navbar" class="container">
   <h1>IARAS</h1>
-  <div class="menu">
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <div class="menu" role="navigation" aria-label="Menu principal">
     <a href="#home">Início</a>
     <a href="#experiencias">Experiências</a>
     <a href="reservas.html">Reservas</a>
@@ -122,6 +123,7 @@
 
 <!-- ⚙️ LÓGICA DO SISTEMA -->
 <script>
+// Elements
 const modal = document.getElementById("modal");
 const loginBox = document.getElementById("loginBox");
 const reservaBox = document.getElementById("reservaBox");
@@ -129,6 +131,39 @@ const reservaBox = document.getElementById("reservaBox");
 const btn = document.querySelector("nav .btn");
 const close = document.querySelector(".close");
 const confirmar = document.getElementById("confirmar");
+const navToggle = document.querySelector('.nav-toggle');
+const menu = document.querySelector('#navbar .menu');
+
+// Mobile menu toggle
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // close menu when clicking links
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+}
+
+// shrink navbar on scroll
+const navbar = document.getElementById('navbar');
+function onScroll() {
+  if (window.scrollY > 20) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+}
+window.addEventListener('scroll', onScroll);
+onScroll();
+
+// close mobile menu on resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 720 && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
 
 // abrir modal
 btn.onclick = () => {

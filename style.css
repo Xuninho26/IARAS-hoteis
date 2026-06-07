@@ -1,11 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap');
 @font-face {
     font-family: 'Candreva';
     src: url('./Candreva.ttf') format('truetype');
 }
-body {
-  padding-top: 80px;
+:root {
+  --color-primary: #2ecc71;
+  --color-accent: #e67e22;
+  --color-link: #0077ff;
+  --text: #222;
+  --muted: #777;
+  --bg: #ffffff;
+  --card-shadow: rgba(0,0,0,0.08);
+  --max-width: 1200px;
 }
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* small helper container */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+nav h1 { font-family: 'Candreva', 'Playfair Display', serif !important; font-size: 42px; margin: 0; }
+
+/* HERO tweaks */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)), url("eai.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    color: white;
+}
+
+.hero-content { max-width: 720px; }
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    line-height: 1.05;
+    margin-bottom: 12px;
+}
+.hero-content p { font-size: clamp(1rem, 1.6vw, 1.25rem); margin-bottom: 18px; color: rgba(255,255,255,0.95); }
+
+.hero-btns { display: flex; gap: 14px; margin-top: 12px; }
+.btn { background: var(--color-primary); color: white; padding: 12px 20px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); }
+.btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.9); }
+.btn-primary { background: var(--color-primary); }
+
+/* preserve existing rules below (rest of file unchanged) */
 
 /* --- NAVBAR --- */
 #navbar {
